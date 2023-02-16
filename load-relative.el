@@ -1,12 +1,12 @@
 ;;; load-relative.el --- Relative file load (within a multi-file Emacs package) -*- lexical-binding: t -*-
 
 ;; Author: Rocky Bernstein <rocky@gnu.org>
-;; Version: 1.3.1
+;; Version: 1.3.2
 ;; Keywords: internal
-;; URL: http://github.com/rocky/emacs-load-relative
+;; URL: https://github.com/rocky/emacs-load-relative
 ;; Compatibility: GNU Emacs 23.x
 
-;; Copyright (C) 2015-2019 Free Software Foundation, Inc
+;; Copyright (C) 2015-2020, 2023 Free Software Foundation, Inc
 
 ;; This program is free software: you can redistribute it and/or
 ;; modify it under the terms of the GNU General Public License as
@@ -35,7 +35,7 @@
 ;; `__FILE__' function and a `provide-me' macro.
 
 ;; The latest version of this code is at:
-;;     http://github.com/rocky/emacs-load-relative/
+;;     https://github.com/rocky/emacs-load-relative/
 
 ;; `__FILE__' returns the file name that that the calling program is
 ;; running.  If you are `eval''ing a buffer then the file name of that
@@ -278,9 +278,12 @@ symbol.
 
 WARNING: it is best to to run this function before any
 buffer-setting or buffer changing operations."
-  (let ((require-string-name
-         (concat opt-prefix (file-name-sans-extension
-                             (file-name-nondirectory relative-file)))))
+  (let* ((relative-file (if (symbolp relative-file)
+                            (symbol-name relative-file)
+                          relative-file))
+         (require-string-name
+          (concat opt-prefix (file-name-sans-extension
+                              (file-name-nondirectory relative-file)))))
     (require (intern require-string-name)
              (relative-expand-file-name relative-file opt-file))))
 

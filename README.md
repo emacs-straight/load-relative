@@ -1,3 +1,5 @@
+![Emacs CI](https://github.com/rocky/emacs-load-relative/workflows/Emacs%20CI/badge.svg)
+
 # Emacs multi-file develop/run-from-of-source routines
 
 The rational behind module is to be able to write small Emacs
@@ -13,7 +15,7 @@ the code or fiddle with evil *load-path*'s. See my [NYC Lisp talk](https://githu
 * [require-relative](https://github.com/rocky/emacs-load-relative#require-relative-require-relative-list)
 * [provide-me](https://github.com/rocky/emacs-load-relative#provide-me)
 
-The latest version is at http://github.com/rocky/emacs-load-relative
+The latest version is at https://github.com/rocky/emacs-load-relative
 
 ## \__FILE__
 
